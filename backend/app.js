@@ -1,9 +1,10 @@
 // app.js
 const express = require('express');
 const sequelize = require('./config/db'); // Import the db connection
-const userRoutes = require('./routes/userRoutes'); 
-const quizRoutes = require('./routes/quizRoutes'); 
-require('./models/relationships');
+const userRoutes = require('./routes/userRoutes'); // Import user routes
+const quizRoutes = require('./routes/quizRoutes'); // Import quiz routes
+const leaderboardRoutes = require('./routes/leaderboardRoutes'); // Import leaderboard routes
+require('./models/relationships'); // Ensure relationships are established
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -21,6 +22,9 @@ app.use('/api/users', userRoutes); // Ensure this line is added to connect user 
 
 // Connect the quiz routes
 app.use('/api/quiz', quizRoutes); // Connect the quiz routes here
+
+// Connect the leaderboard routes
+app.use('/api/leaderboard', leaderboardRoutes); // Connect the leaderboard routes
 
 // Basic route to check if server is running
 app.get('/', (req, res) => {

@@ -1,7 +1,11 @@
 // models/relationships.js
 const Quiz = require('./Quiz');
 const Question = require('./question');
-const Option = require('./option');
+const Option = require('./Option');
+const UserQuizAttempt = require('./UserQuizAttempt');
+const UserAnswer = require('./UserAnswer');
+const Answer = require('./Answer');
+const Leaderboard = require('./Leaderboard');
 
 // Define associations
 Quiz.hasMany(Question, {
@@ -20,4 +24,34 @@ Question.hasMany(Option, {
 
 Option.belongsTo(Question, {
   foreignKey: 'question_id',
+});
+
+// New Relationships
+Question.hasMany(Answer, {
+  foreignKey: 'question_id',
+  as: 'answers',
+});
+
+Answer.belongsTo(Question, {
+  foreignKey: 'question_id',
+});
+
+UserQuizAttempt.belongsTo(Quiz, {
+  foreignKey: 'quiz_id',
+  as: 'quiz',
+});
+
+UserAnswer.belongsTo(UserQuizAttempt, {
+  foreignKey: 'attempt_id',
+  as: 'attempt',
+});
+
+UserAnswer.belongsTo(Answer, {
+  foreignKey: 'answer_id',
+  as: 'selected_answer',
+});
+
+Leaderboard.belongsTo(Quiz, {
+  foreignKey: 'quiz_id',
+  as: 'quiz',
 });
