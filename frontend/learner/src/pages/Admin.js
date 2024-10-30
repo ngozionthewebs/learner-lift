@@ -1,6 +1,7 @@
 const Admin = () =>{
     return(
         <div className="admin">
+            this is the admin
 
         </div>
     );
