@@ -1,4 +1,5 @@
 import '../styles/Cards.css';
+import { Link } from 'react-router-dom';
 
 const RoadRules = () => {
     return (
@@ -13,7 +14,9 @@ const RoadRules = () => {
                 packed with all the questions you might face <br />
                 in the official exam.
             </p>
-            <button>Take The Test</button>
+            <Link to="/quiz/8">
+                <button>Take The Test</button>
+            </Link>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 // app.js
+const cors = require('cors'); // Import CORS
 const express = require('express');
 const path = require('path');
 const sequelize = require('./config/db'); // Import the db connection
@@ -12,6 +13,11 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware to parse JSON
 app.use(express.json());
+
+// Enable CORS
+app.use(cors({
+  origin: 'http://localhost:3000' // Replace with your frontend URL if different
+}));
 
 // Serve static files from the uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

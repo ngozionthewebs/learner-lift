@@ -20,6 +20,15 @@
     
 }
 
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust this value as needed */
+  margin-right: auto; /* This will push the group to the left */
+  margin-left: -20px; /* Adjust for spacing from other elements */
+}
+
+
 .navbar-text {
     color: #555;
     font-size: 14px;
@@ -43,13 +52,12 @@
   }
   
   .btn-danger {
-    width: 100%;
+    width: auto;
     height: 44px;
     border-radius: 8px;
     background: #EB4C37;
     border: none;
-
-
+    padding: 0 15px; 
   }
   
   .btn-success {
@@ -57,7 +65,8 @@
     border-radius: 8px;
     background: #467966;
     border: none;
-  
-
+    margin-left: -10px;
+    width: auto;
+    padding: 0 15px; 
   }
   

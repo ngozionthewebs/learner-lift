@@ -1,13 +1,16 @@
-import '../styles/Leader-board.css'
+import React from 'react';
+import '../styles/Leader-board.css';
 
-const ProgressLine = () =>{
-    return(
+const ProgressLine = ({ score, total }) => {
+    const percentage = (score / total) * 100;
+
+    return (
         <div className="line">
             <div className="progress-line">
-                <div className="inner-line"></div>
+                <div className="inner-line" style={{ width: `${percentage}%` }}></div>
             </div>
         </div>
     );
-}
+};
 
-export default  ProgressLine; 
+export default ProgressLine;

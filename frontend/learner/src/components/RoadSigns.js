@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import '../styles/Cards.css';
 
 const RoadSigns = () =>{
@@ -13,7 +14,9 @@ const RoadSigns = () =>{
                 packed with all the questions you might face <br />
                 in the official exam.
             </p>
-            <div className="button2">TAKE THE TEST</div>
+            <Link to="/quiz/9">
+                <div className="button2">TAKE THE TEST</div>
+            </Link>
 
         </div>
     );

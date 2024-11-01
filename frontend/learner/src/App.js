@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
@@ -12,6 +12,24 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
+
+// Protected Route Component
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const isAuthenticated = !!localStorage.getItem('token'); // Check if token exists
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthenticated ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
+  );
+};
+
 function App() {
   const location = useLocation();
 
@@ -22,13 +40,16 @@ function App() {
     <div className="App">
       {showNavBarAndFooter && <NavBar />} {/* Conditionally render NavBar */}
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/admin" component={Admin} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/quiz" component={Quiz} />
-        <Route path="/leader-board" component={Leaderboard} />
+        {/* Public routes */}
         <Route path="/login" component={Login} />
         <Route path="/sign-up" component={Signup} />
+        
+        {/* Protected routes */}
+        <ProtectedRoute exact path="/" component={Home} />
+        <ProtectedRoute path="/admin" component={Admin} />
+        <ProtectedRoute path="/profile" component={Profile} />
+        <ProtectedRoute path="/leader-board" component={Leaderboard} />
+        <ProtectedRoute path="/quiz/:quizId" component={Quiz} /> {/* New route for quiz */}
       </Switch>
       {showNavBarAndFooter && <Footer />} {/* Conditionally render Footer */}
     </div>
