@@ -1,0 +1,93 @@
+.leader-board{
+    width: 100%;
+    height: 482px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: #EB4C37;
+    margin-top: 90px;
+    }
+
+
+.user1{
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-family: "Bebas Neue";
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 40px;
+}
+
+.ranking-no{
+    padding-left: 40px;
+
+}
+
+.username{
+    padding-left: 40px;
+    
+}
+
+.line{
+    padding-left: 30px;
+}
+
+.progress-line{
+    width: 843px;
+    height: 11px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #FFFCE5;
+}
+
+.inner-line{
+    width: 580px;
+    height: 11px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #FFFCE5;
+    background: #FFF;
+}
+
+.score{
+    padding-left: 30px;
+}
+
+
+.user2{
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-family: "Bebas Neue";
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 40px;
+}
+
+.user3{
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-family: "Bebas Neue";
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 40px;
+}
+
+.user4{
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-family: "Bebas Neue";
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 40px;
+}

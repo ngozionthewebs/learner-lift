@@ -23,21 +23,21 @@ const Quiz = () =>{
 
             <div className="row">
                 <div className="col-6"> 
-                    <div className="option-1"> A. <Option/> </div>
+                    <div className="option-1">  <Option/> </div>
                 </div>
 
                 <div className="col-6">
-                    <div className="option-2"> B. <Option/></div>
+                    <div className="option-2">  <Option/></div>
                 </div>
             </div>
 
             <div className="row">
                 <div className="col-6"> 
-                    <div className="option-3">C. <Option/></div>
+                    <div className="option-3"> <Option/></div>
                 </div>
 
                 <div className="col-6">
-                    <div className="option-4">D. <Option/></div>
+                    <div className="option-4"> <Option/></div>
                 </div>
             </div>
         </div>

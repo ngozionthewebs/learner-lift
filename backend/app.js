@@ -1,5 +1,6 @@
 // app.js
 const express = require('express');
+const path = require('path');
 const sequelize = require('./config/db'); // Import the db connection
 const userRoutes = require('./routes/userRoutes'); // Import user routes
 const quizRoutes = require('./routes/quizRoutes'); // Import quiz routes
@@ -11,6 +12,9 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware to parse JSON
 app.use(express.json());
+
+// Serve static files from the uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Test database connection and sync
 sequelize.sync({ force: false }).then(() => {
