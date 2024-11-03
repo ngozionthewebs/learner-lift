@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.60f49e60.css",
+    "main.js": "/static/js/main.7c96e8be.js",
+    "static/js/453.35abf693.chunk.js": "/static/js/453.35abf693.chunk.js",
+    "static/media/signup.svg": "/static/media/signup.247df23d41128892bf33.svg",
+    "static/media/login.svg": "/static/media/login.2de0b5f4e2ab92e6a6ea.svg",
+    "static/media/road-rules.png": "/static/media/road-rules.52367f4c387b2c487b03.png",
+    "static/media/road-signs.png": "/static/media/road-signs.b4f3dfc0e6750c4b5ca5.png",
+    "static/media/vehicle-controls.png": "/static/media/vehicle-controls.6326e14faf214c5dfb26.png",
+    "static/media/wing3.svg": "/static/media/wing3.14de4e0aed9ef36c859beb5f27ebca0b.svg",
+    "static/media/wing4.svg": "/static/media/wing4.9d972f4ccf3633d5f94424ee7258623a.svg",
+    "static/media/wing2.svg": "/static/media/wing2.9c4c7ac5ad993eee4bd702ebb3d5a212.svg",
+    "static/media/wing1.svg": "/static/media/wing1.9a4e4a93fbcac9e07e7741a60c362b2f.svg",
+    "static/media/logo.svg": "/static/media/logo.8499352e8aaa635ba992f0d4cd56e177.svg",
+    "static/media/settings.svg": "/static/media/settings.3ea54e8f2e2f8d50b21cce78f7eefdde.svg",
+    "static/media/notes.svg": "/static/media/notes.6f4e9c0b63382612e05ce1dab47a486c.svg",
+    "static/media/community.svg": "/static/media/community.62c6a6e563731591bc334f107412f9c5.svg",
+    "static/media/connect.svg": "/static/media/connect.9f7c93d6410a0047eb04eab3d4732a88.svg",
+    "static/media/profile.svg": "/static/media/profile.355287579ccf1fdf39800e43b1c1b229.svg",
+    "index.html": "/index.html",
+    "static/media/bell.svg": "/static/media/bell.16b3d954bb764030fb6d5ce6db63359b.svg",
+    "static/media/log-out.svg": "/static/media/log-out.bb2ccc091121649598faed37a21480aa.svg",
+    "main.60f49e60.css.map": "/static/css/main.60f49e60.css.map",
+    "main.7c96e8be.js.map": "/static/js/main.7c96e8be.js.map",
+    "453.35abf693.chunk.js.map": "/static/js/453.35abf693.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.60f49e60.css",
+    "static/js/main.7c96e8be.js"
+  ]
+}
