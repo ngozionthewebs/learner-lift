@@ -48,7 +48,7 @@ function App() {
         <ProtectedRoute exact path="/" component={Home} />
         <ProtectedRoute path="/admin" component={Admin} />
         <ProtectedRoute path="/profile" component={Profile} />
-        <ProtectedRoute path="/leader-board" component={Leaderboard} />
+        <ProtectedRoute path="/leaderboard" component={Leaderboard} />
         <ProtectedRoute path="/quiz/:quizId" component={Quiz} /> {/* New route for quiz */}
       </Switch>
       {showNavBarAndFooter && <Footer />} {/* Conditionally render Footer */}

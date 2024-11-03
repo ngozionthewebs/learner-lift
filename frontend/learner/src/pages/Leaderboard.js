@@ -4,7 +4,8 @@ import '../styles/Leader-board.css';
 import wing1 from '../assets/wing1.svg';
 import wing2 from '../assets/wing2.svg';
 import ProgressLine from '../components/ProgressLine';
-import axios from 'axios';
+import { getLeaderboardData } from '../services/api'; // Import the function
+import axios from 'axios'; // Keep axios for fetching quiz data
 
 const Leaderboard = () => {
     const [leaderboardData, setLeaderboardData] = useState([]);
@@ -18,8 +19,8 @@ const Leaderboard = () => {
     useEffect(() => {
         const fetchLeaderboardData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5001/api/leaderboard/${quizId}`);
-                setLeaderboardData(response.data.leaderboard);
+                const data = await getLeaderboardData(quizId);
+                setLeaderboardData(data.leaderboard);
             } catch (error) {
                 console.error('Error fetching leaderboard data:', error);
             }
@@ -62,7 +63,8 @@ const Leaderboard = () => {
                             leaderboardData.map((entry, index) => (
                                 <div className={`user${index + 1}`} key={entry.user_id}>
                                     <div className="ranking-no">{index + 1}</div>
-                                    <div className="username">{entry.username || 'Username'}</div>
+                                    {/* Access the username from the User association */}
+                                    <div className="username">{entry.user?.username || 'Username'}</div>
                                     <ProgressLine score={entry.score} total={quizData ? quizData.questions.length : 30} />
                                     <div className="score">{entry.score}/{quizData ? quizData.questions.length : 30}</div>
                                 </div>

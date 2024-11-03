@@ -11,6 +11,7 @@ const Leaderboard = sequelize.define('Leaderboard', {
   quiz_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'quiz_id', // Maps to the `quiz_id` column in the DB
   },
   user_id: {
     type: DataTypes.INTEGER,

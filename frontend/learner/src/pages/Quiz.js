@@ -6,45 +6,50 @@ import Question from '../components/Question';
 import Option from '../components/Option';
 import wing3 from '../assets/wing3.svg';
 import wing4 from '../assets/wing4.svg';
-import { UserContext } from '../context/UserContext'; // Ensure you have a UserContext for user data
+import { UserContext } from '../context/UserContext';
 
 const Quiz = () => {
     const { quizId } = useParams();
     const history = useHistory();
-    const { user } = useContext(UserContext); // Get the current user from context
+    const { user } = useContext(UserContext);
     const [quizData, setQuizData] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
-    const [score, setScore] = useState(0); // Keep track of the user's score
-    const [timer, setTimer] = useState(59); // Set initial timer value
+    const [score, setScore] = useState(0);
+    const [timer, setTimer] = useState(59);
 
     const handleEndQuiz = useCallback(async () => {
         if (!user) {
             console.error('User is not logged in');
             return;
         }
-
+    
         try {
-            // Save the score to the backend with userId and quizId
-            await axios.post('http://localhost:5001/api/quiz/complete', {
-                userId: user.id, // Dynamically use the logged-in user's ID
+            // Save the score and username to localStorage for Leaderboard.js access
+            localStorage.setItem('username', user.username); // Adjust to match your user object structure
+            localStorage.setItem('score', score);
+    
+            // Send quiz result to backend
+            await axios.post('http://localhost:5001/api/leaderboard/submit', {
+                userId: user.user_id, // Ensure this matches your user object structure
                 quizId: quizId,
                 score: score,
             });
-
+    
             // Navigate to the leaderboard page
-            history.push(`/leader-board?quizId=${quizId}`);
+            history.push(`/leaderboard?quizId=${quizId}`);
         } catch (error) {
-            console.error('Error saving quiz results:', error);
+            console.error('Error ending quiz or submitting results:', error);
         }
     }, [user, quizId, score, history]);
+    
 
     const handleNextQuestion = useCallback(() => {
         if (currentQuestionIndex < quizData.questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setSelectedOption(null); // Reset the selected option for the next question
         } else {
-            handleEndQuiz(); // End the quiz if it was the last question
+            handleEndQuiz(); // End the quiz and navigate to leaderboard
         }
     }, [currentQuestionIndex, quizData, handleEndQuiz]);
 
@@ -65,7 +70,7 @@ const Quiz = () => {
             const timerId = setTimeout(() => {
                 setTimer(timer - 1);
             }, 1000);
-            return () => clearTimeout(timerId); // Cleanup timer on unmount
+            return () => clearTimeout(timerId);
         } else {
             handleNextQuestion(); // Automatically move to next question when time runs out
         }
@@ -80,6 +85,7 @@ const Quiz = () => {
         if (option.is_correct) {
             setScore((prevScore) => prevScore + 1); // Increment score if the selected option is correct
         }
+        setTimeout(handleNextQuestion, 1000); // Automatically move to the next question after a delay
     };
 
     const handlePreviousQuestion = () => {
@@ -127,15 +133,6 @@ const Quiz = () => {
                             {currentQuestionIndex > 0 && (
                                 <button onClick={handlePreviousQuestion} className="btn btn-secondary">
                                     Previous Question
-                                </button>
-                            )}
-                            {currentQuestionIndex < quizData.questions.length - 1 ? (
-                                <button onClick={handleNextQuestion} className="btn btn-primary">
-                                    Next Question
-                                </button>
-                            ) : (
-                                <button onClick={handleEndQuiz} className="btn btn-danger">
-                                    End Quiz
                                 </button>
                             )}
                         </div>

@@ -41,18 +41,19 @@ exports.createQuiz = async (req, res) => {
 // Get a quiz by ID
 exports.getQuizById = async (req, res) => {
   const { quizId } = req.params;
+  const quiz_id = quizId; // Map `quizId` to `quiz_id`
 
   try {
     const quiz = await Quiz.findOne({
-      where: { quiz_id: quizId },
+      where: { quiz_id }, // Use `quiz_id` for the database query
       include: [
         {
           model: Question,
-          as: 'questions',  // This matches the alias set in relationships.js
+          as: 'questions', // Ensure this matches the alias set in relationships.js
           include: [
             {
               model: Option,
-              as: 'options',  // This matches the alias set in relationships.js
+              as: 'options', // Ensure this matches the alias set in relationships.js
             },
           ],
         },
@@ -72,20 +73,19 @@ exports.getQuizById = async (req, res) => {
 // Complete a quiz and update leaderboard
 exports.completeQuiz = async (req, res) => {
   const { userId, quizId, userAnswers } = req.body;
+  const quiz_id = quizId; // Map `quizId` to `quiz_id`
 
   try {
     // Calculate score based on user's answers
     const score = await calculateScore(userAnswers);
 
     // Get the total number of questions for the quiz
-    const totalQuestions = await Question.count({
-      where: { quiz_id: quizId },
-    });
+    const totalQuestions = await Question.count({ where: { quiz_id } });
 
     // Store quiz attempt
     const attempt = await UserQuizAttempt.create({
       user_id: userId,
-      quiz_id: quizId,
+      quiz_id,
       score,
       attempt_date: new Date(),
     });
@@ -100,18 +100,27 @@ exports.completeQuiz = async (req, res) => {
       });
     }
 
-    // Update leaderboard if the new score is higher
-    const topScore = await Leaderboard.findOne({ where: { quiz_id: quizId } });
-    if (!topScore || score > topScore.score) {
-      await Leaderboard.upsert({ quiz_id: quizId, user_id: userId, score });
+    // Check if a leaderboard entry exists for this user and quiz
+    const existingEntry = await Leaderboard.findOne({
+      where: { quiz_id, user_id: userId },
+    });
+
+    // Update the leaderboard if the new score is higher, or create a new entry
+    if (!existingEntry || score > existingEntry.score) {
+      await Leaderboard.upsert({
+        quiz_id,
+        user_id: userId,
+        score,
+        display_until: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Optional: set a display duration of 7 days
+      });
     }
 
     // Return the score along with the total number of questions
     res.status(200).json({
       message: 'Quiz completed successfully',
       score,
-      totalQuestions,  // This gives you the "out of" value
-      result: `${score}/${totalQuestions}`,  // Format the score as "X/Y"
+      totalQuestions,
+      result: `${score}/${totalQuestions}`,
     });
   } catch (error) {
     res.status(500).json({ message: 'Error completing quiz', error });

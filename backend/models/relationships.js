@@ -6,8 +6,9 @@ const UserQuizAttempt = require('./UserQuizAttempt');
 const UserAnswer = require('./UserAnswer');
 const Answer = require('./Answer');
 const Leaderboard = require('./Leaderboard');
+const User = require('./User'); 
 
-// Define associations
+// Define existing associations
 Quiz.hasMany(Question, {
   foreignKey: 'quiz_id',
   as: 'questions',
@@ -54,4 +55,18 @@ UserAnswer.belongsTo(Answer, {
 Leaderboard.belongsTo(Quiz, {
   foreignKey: 'quiz_id',
   as: 'quiz',
+});
+
+// Add these associations
+Leaderboard.belongsTo(User, {
+  foreignKey: 'user_id',
+  as: 'user', // This alias allows you to access user details in the leaderboard
+});
+
+User.hasMany(Leaderboard, {
+  foreignKey: 'user_id',
+});
+
+Quiz.hasMany(Leaderboard, {
+  foreignKey: 'quiz_id',
 });
