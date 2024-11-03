@@ -36,6 +36,14 @@ app.use('/api/quiz', quizRoutes); // Connect the quiz routes here
 // Connect the leaderboard routes
 app.use('/api/leaderboard', leaderboardRoutes); // Connect the leaderboard routes
 
+// Serve static files from the frontend build directory
+app.use(express.static(path.join(__dirname, '../frontend/build'))); // Adjust path if necessary
+
+// Catch-all route to serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html')); // Adjust path if necessary
+});
+
 // Basic route to check if server is running
 app.get('/', (req, res) => {
   res.send('Server is running!');
