@@ -1,5 +1,6 @@
-# learner-lift
- Application that allows users from South Africa prepare for their learners licence in a interactive and fun way
+
+<img width="1920" alt="Frame 554" src="https://github.com/user-attachments/assets/9a627ba1-dc07-4c9b-84c7-b9d8d2e1926e">
+
 
 ## About Learner Lift
 
@@ -175,6 +176,13 @@ Implementing the leaderboard functionality was particularly challenging due to d
 ```
 https://drive.google.com/file/d/1NdljcN6lTr2J_vZ5Pr2M3xgjya-5yXqE/view?usp=sharing
 ```
+## Open Brief Proposal
+
+[231285_Ngozi Ojukwu_Open Brief Proposal _DV200.pdf](https://github.com/user-attachments/files/17626113/231285_Ngozi.Ojukwu_Open.Brief.Proposal._DV200.pdf)
+
+## Milestone Check Document
+
+[231285_Ngozi Ojukwu_Progress Milestone Check (1).pdf](https://github.com/user-attachments/files/17626118/231285_Ngozi.Ojukwu_Progress.Milestone.Check.1.pdf)
 
 ## License
 
