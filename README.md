@@ -162,7 +162,8 @@ Implementing the leaderboard functionality was particularly challenging due to d
 ## Demonstration Video
 
 ```
-https://drive.google.com/file/d/1NdljcN6lTr2J_vZ5Pr2M3xgjya-5yXqE/view?usp=sharing
+https://youtu.be/uF3ZzwMv65w
+
 ```
 ## Open Brief Proposal
 
