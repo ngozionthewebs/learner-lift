@@ -159,18 +159,6 @@ Enjoyed the challenge and overall had a fulfilling time developing it.
 
 Implementing the leaderboard functionality was particularly challenging due to database issues with saving the quiz ID and user ID, making it difficult for the leaderboard to function. Through troubleshooting and persistence, I was able to resolve these issues and implement a working leaderboard.
 
-## Mockups
-
-### Home Page
-
-### Login Page
-
-### Sign Up Page
-
-### Quiz Page
-
-### Scoreboard Page
-
 ## Demonstration Video
 
 ```
